@@ -5,7 +5,6 @@ const app = express();
 const port = process.env.PORT|| 3000 ;
 const dotenv = require("dotenv")
 const fs = require('fs').promises;
-const multer = require('multer');
 dotenv.config()
 app.use(express.json());
 
@@ -18,74 +17,6 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY,);
 app.use(express.urlencoded({ extended: true }));
 
 // Configuración de Multer para manejar la carga de archivos
-const upload = multer({ 
-  dest: 'uploads/',
-  limits: {
-    fileSize: 50 * 1024 * 1024 // Limitar tamaño de archivo a 50MB
-  },
-  fileFilter: (req, file, cb) => {
-    if (file.mimetype.startsWith('image/') || file.mimetype.startsWith('video/')) {
-      cb(null, true);
-    } else {
-      cb(new Error('El archivo no es una imagen o video válido'));
-    }
-  }
-});
-
-// Ruta para cargar archivos al bucket de Supabase
-app.post('/upload', upload.single('file'), async (req, res) => {
-  try {
-    const file = req.file;
-    if (!file) {
-      return res.status(400).send('Debe proporcionar un archivo');
-    }
-
-    // Leer el archivo en un Buffer
-    const fileContent = await fs.readFile(file.path);
-
-    // Subir el Buffer a Supabase Storage
-    const { data, error } = await supabase.storage.from('probando').upload(`archivos/${file.originalname}`, fileContent, {
-      contentType: file.mimetype
-    });
-
-    if (error) {
-      throw error;
-    }
-
-    // Obtener la URL del archivo subido
-    const url = `https://bxwmuwjokowryjyzwufq.supabase.co/storage/v1/object/public/probando/archivos/${file.originalname}`;
-
-    console.log('Archivo subido exitosamente:', url);
-    res.redirect('/multimedia');
-  } catch (error) {
-    console.error('Error al subir el archivo:', error.message);
-    res.send(`
-    <script>
-      alert('no eres administrador');
-      window.location.href = '/multimedia'; // Redirigir a la página principal
-    </script>
-  `);
-  }
-});
-
-// Ruta para obtener la lista de archivos de la carpeta 'uploads' en el bucket de Supabase
-app.get('/list', async (req, res) => {
-  try {
-      const { data, error } = await supabase.storage.from('probando').list('archivos/');
-      if (error) {
-          throw error;
-      } else {
-          // Enviar la lista de archivos al cliente
-          res.json(data);
-      }
-  } catch (error) {
-      console.error('Error al obtener la lista de archivos:', error.message);
-      res.status(500).send('Error interno del servidor');
-  }
-});
-
-
-
 
 app.get("/auth/confirm", async function (req, res) {
   const token_hash = req.query.token_hash;
