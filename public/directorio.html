@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>BIOLVEN</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700|Roboto:400,700&display=swap" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <div class="top_contact-container">
+          <div class="tel_container">
+            <a href="">
+            </a>
+          </div>
+          <div class="social-container">
+            <a href="https://www.facebook.com/biolvenlab" target="_blank">
+              <img src="images/fb.png" alt="" class="s-1">
+            </a>
+            <a href="#" onclick="openWhatsAppChat();">
+              <img src="images/telephone-symbol-button.png" alt="" class="s-2">
+            </a>
+            <a href="https://www.instagram.com/biolvenlab/" target="_blank">
+              <img src="images/instagram.png" alt="" class="s-3">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <a class="navbar-brand" href="login.html">
+            <img src="images/Logo_Mesa_de_trabajo_1.png" alt="">
+            <span>
+              BIOLVEN
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-between">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="login.html">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="sobrenosotros.html"> Sobre nosotros </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="productos.html"> Productos </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/multimedia"> Noticias </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contact.html">Contacto</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/userDataCalendario">Calendario</a>
+                </li>
+                <li class="nav-item">
+                 <a class="nav-link" href="directorio.html">Directorio</a>
+               </li>
+               <li class="nav-item">
+               <a class="nav-link" href="/userData">Usuario</a>
+               </li>
+              </ul>
+                  <div class="login_btn-contanier ml-0 ml-lg-5">
+                    <a href="/">
+                      <img src="images/user.png" alt="">
+                      <span>
+                        Login
+                      </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- Agrega esta parte al final del archivo directorio.html -->
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="d-flex justify-content-center mb-3">
+          <button id="sortNameBtn" style="background-color: rgb(170, 170, 170);" class="btn btn-primary mr-2">Ordenar alfabéticamente</button>
+          <button id="resetBtn" style="background-color: rgb(170, 170, 170);" class="btn btn-primary mr-2">Restablecer</button>
+          <input id="searchInput" type="text" class="form-control ml-2" placeholder="Buscar">
+        </div>
+        <h2>Directorio de Usuarios</h2>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Nombre de Usuario</th>
+                <th>Teléfono</th>
+                <th>Correo Electrónico</th>
+                <th>Ciudad</th>
+                <th>Estado</th>
+                <th>Zona de Distribución</th>
+              </tr>
+            </thead>
+            <tbody id="directorioTableBody">
+              <!-- Aquí se llenará la tabla con datos dinámicamente -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    let originalData; // Variable para almacenar los datos originales de la tabla
+
+    // Fetch data from the database and populate the table
+    function fetchData() {
+      fetch('https://bxwmuwjokowryjyzwufq.supabase.co/rest/v1/usuarios', {
+          method: 'GET',
+          headers: {
+            'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4d211d2pva293cnlqeXp3dWZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA0MzQxNTAsImV4cCI6MjAyNjAxMDE1MH0.nHHebBVBsMwDckP4lJtPgtXICmS4hRS9Bxrcu0Y96Fo'
+          }
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error en la solicitud: ' + response.statusText);
+          }
+          return response.json();
+        })
+        .then(data => {
+          originalData = data; // Almacenar los datos originales
+          populateTable(data); // Llenar la tabla con los datos obtenidos
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    }
+
+    // Function to populate the table with data
+    function populateTable(data) {
+      const tableBody = document.getElementById('directorioTableBody');
+      tableBody.innerHTML = ''; // Limpiar contenido existente de la tabla
+      data.forEach(usuario => {
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+              <td>${usuario.nombre}</td>
+              <td>${usuario.nombre_usuario}</td>
+              <td>${usuario.telefono}</td>
+              <td>${usuario.email}</td>
+              <td>${usuario.ciudad}</td>
+              <td>${usuario.estado}</td>
+              <td>${usuario.zona_distribucion}</td>
+          `;
+        tableBody.appendChild(newRow);
+      });
+    }
+
+    // Order the table alphabetically by name
+    function sortTable(columnIndex) {
+      const sortedData = [...originalData]; // Make a copy of the original data
+      sortedData.sort((a, b) => a.nombre.localeCompare(b.nombre)); // Sort alphabetically by name
+      populateTable(sortedData); // Populate the table with sorted data
+    }
+
+    // Function to reset the table
+    function resetTable() {
+      document.getElementById('searchInput').value = ''; // Clear search input
+      fetchData(); // Fetch original data and populate the table
+    }
+
+    // Event listeners for buttons
+    document.getElementById('sortNameBtn').addEventListener('click', function() {
+      sortTable(0);
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', function() {
+      resetTable();
+    });
+
+    // Function to search the table
+    document.getElementById('searchInput').addEventListener('input', function() {
+      const input = this.value.toUpperCase();
+      const table = document.querySelector('table');
+      const rows = table.getElementsByTagName('tr');
+      for (let i = 0; i < rows.length; i++) {
+        const td = rows[i].getElementsByTagName('td');
+        let found = false;
+        for (let j = 0; j < td.length; j++) {
+          if (td[j]) {
+            const txtValue = td[j].textContent || td[j].innerText;
+            if (txtValue.toUpperCase().indexOf(input) > -1) {
+              found = true;
+              break;
+            }
+          }
+        }
+        if (found) {
+          rows[i].style.display = '';
+        } else {
+          rows[i].style.display = 'none';
+        }
+      }
+    });
+
+    // Function to open WhatsApp chat
+    function openWhatsAppChat() {
+      const phoneNumber = '+524771546115';
+      const message = 'Hola, estoy visitando tu sitio web.';
+      const whatsappURL = 'https://wa.me/' + phoneNumber + '?text=' + encodeURIComponent(message);
+      window.open(whatsappURL, '_blank', 'width=600,height=400,scrollbars=yes');
+    }
+
+    // Load initial data
+    fetchData();
+  </script>
+
+ <!-- info section -->
+ <section class="info_section layout_padding2">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="info_contact">
+          <h4>
+            Contacto
+          </h4>
+          <div class="box">
+            <div class="img-box">
+              <img src="images/telephone-symbol-button.png" alt="">
+            </div>
+            <div class="detail-box">
+              <h6>
+                +52 4771546115
+              </h6>
+              <h6>
+                +52 4791373460
+              </h6>
+            </div>
+          </div>
+          <div class="box">
+            <div class="img-box">
+              <br>
+              <br>
+              <br>
+              <img src="images/email.png" alt="">
+            </div>
+            <div class="detail-box">
+              <br>
+              <br>
+              <br>
+              <h6>
+                ramonangelserrano@gmail.com
+              </h6>
+              <h6>
+                nilapedroxn6@gmail.com
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="info_menu">
+          <h4>
+            Menu
+          </h4>
+          <ul class="navbar-nav  ">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sobrenosotros.html"> Sobre nosotros </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="info_news">
+          <h4>
+            Suscribcciones
+          </h4>
+          <form action="https://formsubmit.co/biolvenproveedores@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Nuevo suscriptor - Deseo suscribirme y recibir notificaciones">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_autoresponse" value="Gracias por suscribirte. Pronto recibirás nuestras notificaciones.">
+            <input type="email" name="email" placeholder="Ingresa tu correo" required>
+            <div class="d-flex justify-content-center justify-content-end mt-3">
+              <button type="submit">Suscribirme</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- footer section -->
+  <section class="container-fluid footer_section">
+    <p>
+      &copy; 2024 todos los derechos reservados. por 
+      <a href="https://html.design/">Biolven develops</a>
+    </p>
+  </section>
+  <!-- end info section -->
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js">
+  </script>
+  <script type="text/javascript">
+    $(".owl-carousel").owlCarousel({
+      loop: true,
+      margin: 10,
+      nav: true,
+      navText: [],
+      autoplay: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 2
+        },
+        1000: {
+          items: 4
+        }
+      }
+    });
+  </script>
+  <script type="text/javascript">
+    $(".owl-2").owlCarousel({
+      loop: true,
+      margin: 10,
+      nav: true,
+      navText: [],
+      autoplay: true,
+
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 2
+        },
+        1000: {
+          items: 4
+        }
+      }
+    });
+  </script>
+  <script>
+    function openWhatsAppChat() {
+      const phoneNumber = '+524771546115';
+      const message = 'Hola, estoy visitando tu sitio web.';
+      const whatsappURL = 'https://wa.me/' + phoneNumber + '?text=' + encodeURIComponent(message);
+      window.open(whatsappURL, '_blank', 'width=600,height=400,scrollbars=yes');
+    }
+  </script>
+</body>
+
+</html>

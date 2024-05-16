@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>BIOLVEN</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700|Roboto:400,700&display=swap" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <div class="top_contact-container">
+          <div class="tel_container">
+            <a href="">
+            </a>
+          </div>
+          <div class="social-container">
+            <a href="https://www.facebook.com/biolvenlab" target="_blank">
+              <img src="images/fb.png" alt="" class="s-1">
+            </a>
+            <a href="#" onclick="openWhatsAppChat();">
+              <img src="images/telephone-symbol-button.png" alt="" class="s-2">
+            </a>
+            <a href="https://www.instagram.com/biolvenlab/" target="_blank">
+              <img src="images/instagram.png" alt="" class="s-3">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <a class="navbar-brand" href="login.html">
+            <img src="images/Logo_Mesa_de_trabajo_1.png" alt="">
+            <span>
+              BIOLVEN
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-between">
+            <ul class="navbar-nav  ">
+            <li class="nav-item active">
+              <a class="nav-link" href="login.html">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sobrenosotros.html"> Sobre nosotros </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="productos.html"> Productos </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/multimedia"> Noticias </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/userDataCalendario">Calendario</a>
+            </li>
+            <li class="nav-item">
+             <a class="nav-link" href="directorio.html">Directorio</a>
+           </li>
+           <li class="nav-item">
+           <a class="nav-link" href="/userData">Usuario</a>
+           </li>
+          </ul>
+              <div class="login_btn-contanier ml-0 ml-lg-5">
+                <a href="/">
+                  <img src="images/user.png" alt="">
+                  <span>
+                    Login
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  
+    <style>
+      /* Estilos para los botones */
+      button {
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+      }
+  
+      /* Estilos para el menú de archivos */
+      #archivoMenu {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-top: 10px;
+        width: 80%;
+        margin: auto;
+      }
+  
+      #archivoList {
+        list-style-type: none; /* Eliminar viñetas */
+        padding: 0;
+      }
+  
+      #archivoList li {
+        margin-bottom: 5px;
+      }
+  
+      /* Estilos para el carrusel */
+      #slider {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        width: 90%; /* Ajuste del ancho del slider */
+        height: 300px; /* Ajuste de la altura del slider */
+        margin: auto; /* Centrar el slider horizontalmente */
+      }
+  
+      #slider img,
+      #slider video {
+        max-width: 100%;
+        max-height: 100%;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <!-- about section -->
+    <section class="about_section layout_padding">
+      <div id="slider">
+        <!-- Aquí se cargarán las imágenes y videos del bucket de Supabase -->
+      </div>
+  
+      <h2>Subir Archivos</h2>
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button type="submit">Subir Archivo</button>
+      </form>
+  
+      <button onclick="abrirMenu()">Abrir Menú</button>
+      <button onclick="cerrarMenu()">Cerrar Menú</button> <!-- Botón para cerrar el menú -->
+  
+      <button id="limpiarSliderBtn" onclick="limpiarSlider()">Limpiar Slider</button>
+  
+      <div id="archivoMenu" style="display: none;">
+        <h2>Menú de Archivos</h2>
+        <ul id="archivoList"></ul>
+      </div>
+  
+      <button onclick="subirAlSlider()">Subir al Slider</button>
+  
+      <script>
+      let selectedFiles = [];
+
+      async function abrirMenu() {
+        const response = await fetch('/list');
+        const archivos = await response.json();
+        const archivoList = document.getElementById('archivoList');
+        archivoList.innerHTML = ''; // Limpiar la lista antes de agregar los nuevos elementos
+        archivos.forEach(file => {
+          const listItem = document.createElement('li');
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.name = 'fileSelection';
+          checkbox.value = file.name;
+          checkbox.onchange = function () {
+            if (this.checked) {
+              selectedFiles.push(file.name);
+            } else {
+              const index = selectedFiles.indexOf(file.name);
+              if (index !== -1) {
+                selectedFiles.splice(index, 1);
+              }
+            }
+            console.log('Archivos seleccionados:', selectedFiles);
+          };
+          const label = document.createElement('label');
+          label.textContent = file.name;
+          listItem.appendChild(checkbox);
+          listItem.appendChild(label);
+          archivoList.appendChild(listItem);
+        });
+        const archivoMenu = document.getElementById('archivoMenu');
+        archivoMenu.style.display = 'block'; // Mostrar el menú de archivos
+        console.log('Menú de archivos abierto');
+      }
+    
+      function cerrarMenu() {
+        const archivoMenu = document.getElementById('archivoMenu');
+        archivoMenu.style.display = 'none'; // Ocultar el menú de archivos
+        console.log('Menú de archivos cerrado');
+      }
+    
+      function limpiarSlider() {
+        const slider = document.getElementById('slider');
+        slider.innerHTML = ''; // Limpiar el slider visualmente
+        localStorage.removeItem('archivosSlider'); // Eliminar la lista de archivos en localStorage
+        console.log('Slider limpiado');
+      }
+    
+      function cargarElementosGuardados() {
+        const slider = document.getElementById('slider');
+        const archivosGuardados = JSON.parse(localStorage.getItem('archivosSlider')) || [];
+        archivosGuardados.forEach(file => {
+          const url = 'https://bxwmuwjokowryjyzwufq.supabase.co/storage/v1/object/public/probando/archivos/' + file;
+          if (file.endsWith('.mp4')) {
+            slider.innerHTML += '<video src="' + url + '" controls width="620" height="300"></video>';
+          } else {
+            slider.innerHTML += '<img src="' + url + '" alt="' + file + '" width="620" height="300">';
+          }
+        });
+      }
+    
+      function guardarElementosSlider(selectedFiles) {
+        localStorage.setItem('archivosSlider', JSON.stringify(selectedFiles));
+      }
+      function limpiarLocalStorage() {
+        selectedFiles = []; // Restablece la lista de archivos seleccionados
+      }
+    
+      document.addEventListener('DOMContentLoaded', () => {
+        cargarElementosGuardados();
+        document.getElementById('limpiarSliderBtn').addEventListener('click', limpiarSlider);
+        limpiarLocalStorage(); // Restablece selectedFiles al cargar la página
+      });
+      
+    
+      async function subirAlSlider() {
+        const slider = document.getElementById('slider');
+        const archivosGuardados = JSON.parse(localStorage.getItem('archivosSlider')) || [];
+        
+        selectedFiles.forEach(async file => {
+          const url = 'https://bxwmuwjokowryjyzwufq.supabase.co/storage/v1/object/public/probando/archivos/' + file;
+          
+          // Verificar si el archivo ya está en el slider
+          const fileExists = archivosGuardados.includes(file);
+          
+          if (!fileExists) {
+            // Agregar el archivo al slider solo si no existe
+            if (file.endsWith('.mp4')) {
+              slider.innerHTML += '<video src="' + url + '" controls width="620" height="300"></video>';
+            } else {
+              slider.innerHTML += '<img src="' + url + '" alt="' + file + '" width="620" height="300">';
+            }
+            
+            // Registrar el archivo como agregado al slider
+            archivosGuardados.push(file);
+            console.log('Archivo subido al slider:', file);
+          }
+        });
+        guardarElementosSlider(archivosGuardados); // Guardar elementos del slider actualizados en localStorage
+        const checkboxes = document.getElementsByName('fileSelection');
+        checkboxes.forEach(checkbox => {
+          checkbox.checked = false; // Desmarcar todos los cuadros de selección
+        });
+      }
+      </script>
+    </section>
+  
+    <!-- info section -->
+    <section class="info_section layout_padding2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="info_contact">
+              <h4>
+                Contacto
+              </h4>
+              <div class="box">
+                <div class="img-box">
+                  <img src="images/telephone-symbol-button.png" alt="">
+                </div>
+                <div class="detail-box">
+                  <h6>
+                    +52 4771546115
+                  </h6>
+                  <h6>
+                    +52 4791373460
+                  </h6>
+                </div>
+              </div>
+              <div class="box">
+                <div class="img-box">
+                  <br>
+                  <br>
+                  <br>
+                  <img src="images/email.png" alt="">
+                </div>
+                <div class="detail-box">
+                  <br>
+                  <br>
+                  <br>
+                  <h6>
+                    ramonangelserrano@gmail.com
+                  </h6>
+                  <h6>
+                    nilapedroxn6@gmail.com
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="info_menu">
+              <h4>
+                Menu
+              </h4>
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="sobrenosotros.html"> Sobre nosotros </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="info_news">
+              <h4>
+                Suscripciones
+              </h4>
+              <form action="https://formsubmit.co/biolvenproveedores@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="Nuevo suscriptor - Deseo suscribirme y recibir notificaciones">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_autoresponse" value="Gracias por suscribirte. Pronto recibirás nuestras notificaciones.">
+                <input type="email" name="email" placeholder="Ingresa tu correo" required>
+                <div class="d-flex justify-content-center justify-content-end mt-3">
+                  <button type="submit">Suscribirme</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  </body>
+  
+  </html>

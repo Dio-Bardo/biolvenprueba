@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calendario</title>
+
+   <!-- slider stylesheet -->
+   <link rel="stylesheet" type="text/css"
+   href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+ <!-- font awesome style -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+ <!-- bootstrap core css -->
+ <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+ <!-- fonts style -->
+ <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700|Roboto:400,700&display=swap" rel="stylesheet">
+
+ <!-- Custom styles for this template -->
+ <link href="css/style.css" rel="stylesheet" />
+ <!-- responsive style -->
+ <link href="css/responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <div class="top_contact-container">
+          <div class="tel_container">
+            <a href="">
+            </a>
+          </div>
+          <div class="social-container">
+            <a href="https://www.facebook.com/biolvenlab" target="_blank">
+              <img src="images/fb.png" alt="" class="s-1">
+            </a>
+            <a href="#" onclick="openWhatsAppChat();">
+              <img src="images/telephone-symbol-button.png" alt="" class="s-2">
+            </a>
+            <a href="https://www.instagram.com/biolvenlab/" target="_blank">
+              <img src="images/instagram.png" alt="" class="s-3">
+            </a>
+          </div>
+        </div>
+      </div>
+     <div class="container-fluid">
+       <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+         <a class="navbar-brand" href="login.html">
+           <img src="images/Logo_Mesa_de_trabajo_1.png" alt="">
+           <span>
+             BIOLVEN
+           </span>
+         </a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+         </button>
+
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-between">
+           <ul class="navbar-nav  ">
+           <li class="nav-item active">
+             <a class="nav-link" href="login.html">Inicio <span class="sr-only">(current)</span></a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="sobrenosotros.html"> Sobre nosotros </a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="productos.html"> Productos </a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="/multimedia"> Noticias </a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="contact.html">Contacto</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="/userDataCalendario">Calendario</a>
+           </li>
+           <li class="nav-item">
+            <a class="nav-link" href="directorio.html">Directorio</a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link" href="/userData">Usuario</a>
+          </li>
+         </ul>
+             <div class="login_btn-contanier ml-0 ml-lg-5">
+               <a href="/">
+                 <img src="images/user.png" alt="">
+                 <span>
+                   Login
+                 </span>
+               </a>
+             </div>
+           </div>
+         </div>
+       </nav>
+     </div>
+   </header>
+   <main>
+   <div class="container mt-5">
+     <div class="row justify-content-center">
+       <div class="col-md-6">
+         <div class="card">
+           <div class="card-header">
+             Iniciar Sesión
+           </div>
+           <div class="card-body text-center">
+             <form action="/login" method="POST">
+               <div class="form-group">
+                 <label for="email">Correo Electrónico</label>
+                 <input type="email" class="form-control" id="email" name="email" required>
+               </div>
+               <div class="form-group">
+                 <label for="password">Contraseña</label>
+                 <input type="password" class="form-control" id="password" name="password" required>
+               </div>
+               <div class="form-group">
+                 <a href="/forgot-password" class="btn btn-link">¿Olvidaste tu contraseña?</a>
+               </div>
+               <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+             </form>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </main>
+
+  <!-- info section -->
+  <section class="info_section layout_padding2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="info_contact">
+            <h4>
+              Contacto
+            </h4>
+            <div class="box">
+              <div class="img-box">
+                <img src="images/telephone-symbol-button.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  +52 4771546115
+                </h6>
+                <h6>
+                  +52 4791373460
+                </h6>
+              </div>
+            </div>
+            <div class="box">
+              <div class="img-box">
+                <br>
+                <br>
+                <br>
+                <img src="images/email.png" alt="">
+              </div>
+              <div class="detail-box">
+                <br>
+                <br>
+                <br>
+                <h6>
+                  ramonangelserrano@gmail.com
+                </h6>
+                <h6>
+                  nilapedroxn6@gmail.com
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info_menu">
+            <h4>
+              Menu
+            </h4>
+            <ul class="navbar-nav  ">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="sobrenosotros.html"> Sobre nosotros </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="info_news">
+            <h4>
+              Suscripciones
+            </h4>
+            <form action="">
+              <input type="text" placeholder="Ingresa tu correo">
+              <div class="d-flex justify-content-center justify-content-end mt-3">
+                <button>
+                  Suscríbete
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- end info section -->
+
+  <!-- footer section -->
+  <section class="container-fluid footer_section">
+    <p>
+      &copy; 2024 todos los derechos reservados. por 
+      <a href="https://html.design/">Biolven develops</a>
+    </p>
+  </section>
+  <!-- footer section -->
+
+  <script>
+    function openWhatsAppChat() {
+      var phoneNumber = '+524771546115'; // Reemplaza con tu número de teléfono
+      var message = 'Hola, estoy visitando tu sitio web.'; // Mensaje predeterminado opcional
+
+      // Construye la URL del enlace de WhatsApp
+      var whatsappURL = 'https://wa.me/' + phoneNumber + '?text=' + encodeURIComponent(message);
+
+      // Abre una nueva ventana con el enlace de WhatsApp
+      window.open(whatsappURL, '_blank', 'width=600,height=400,scrollbars=yes');
+    }
+  </script>
+  <script>
+  const params = new URLSearchParams(window.location.search);
+  const nombre = params.get('nombre');
+
+  // Mostrar el nombre en una ventana emergente si está definido
+  window.onload = function() {
+    if (nombre) {
+      alert('El nombre encontrado es: ' + nombre);
+    }
+  };
+</script>
+
+  <!-- jQuery, Popper.js, Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
