@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/miScript.js" // Ruta al archivo principal de tu aplicación
+      "dest": "/" // Ruta al archivo principal de tu aplicación
     }
   ]
 }
