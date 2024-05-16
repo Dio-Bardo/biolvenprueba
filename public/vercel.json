@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "miScript.js", // Ruta al archivo principal de tu aplicación
+      "src": "/miScript.js", // Ruta al archivo principal de tu aplicación
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "miScript.js" // Ruta al archivo principal de tu aplicación
+      "dest": "/miScript.js" // Ruta al archivo principal de tu aplicación
     }
   ]
 }
