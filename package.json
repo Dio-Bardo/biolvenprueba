@@ -13,6 +13,7 @@
   "version": "1.0.0",
   "main": "miScript.js",
   "scripts": {
+    "start": "node miScript.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
