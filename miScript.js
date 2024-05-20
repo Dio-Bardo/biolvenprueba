@@ -170,14 +170,21 @@ async function logout() {
 
 app.post('/editar_usuario', async (req, res) => {
   const { ciudad, estado, zona_distribucion } = req.body;
-  const emails = userEmailInput;
-
-  try {
+   try {
+    // Verificar si el usuario está autenticado
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      // Si el usuario no está autenticado, redirigirlo a la página de inicio de sesión
+      res.redirect('/login');
+      return;
+    }
+    console.log('Correo electrónico del usuario:', user.email);
+    const userEmail = user.email;
       // Realizar la actualización en la tabla 'usuarios' de Supabase
       const { data, error } = await supabase
           .from('usuarios')
           .update({ ciudad, estado, zona_distribucion })
-          .eq('email', emails);
+          .eq('email', userEmail);
 
       if (error) {
           throw error;
